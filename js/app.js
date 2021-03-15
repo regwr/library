@@ -5,10 +5,9 @@ const bookStatus = {
     PLANTOREAD: "PLAN TO READ"
 }
 
-function Book(title= "Unknown", author= "Unknown", pages=0, status="READING") {
+function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
-    this.read_pages = 0;
     this.pages = pages;
     this.status = status;
 }
@@ -27,9 +26,10 @@ const addBook = newBook => {
     localStorage.setItem("library", JSON.stringify(library));
 };
 
-// const removeBook = book => {
+// const removeBook = book => 
+//     const index = library.indexOf(book);
 //     if (index !== -1) {
-//         library.splice(library.indexOf(book), 1);
+//         library.splice(index, 1);
 //         localStorage.setItem("library", JSON.stringify(library));
 //     }
 // }
@@ -71,7 +71,6 @@ const showBooks = () => {
 
 
         removeButton.innerHTML = "REMOVE";
-        removeButton.classList.add("one");
         removeButton.onclick = () => {
             tbody.deleteRow(row.index);
             removeBookByName(book.title);
@@ -87,9 +86,7 @@ const showBooks = () => {
 
 bookForm.addEventListener("submit", event => {
     const form = event.target.elements;
-
-    if (form.bookPages.value === "") form.bookPages.value = 0;
-
+    
     const book = new Book(form.bookTitle.value, form.bookAuthor.value, form.bookPages.value, form.bookStatus.value);
     addBook(book);
 });
