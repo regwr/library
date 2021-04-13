@@ -6,10 +6,10 @@ const bookStatus = {
 }
 
 function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+    this.title = title || "Unknown";
+    this.author = author || "Unknown";
+    this.pages = pages || 0;
+    this.status = status || bookStatus.READING;
 }
 
 const bookForm = document.getElementById("bookForm");
